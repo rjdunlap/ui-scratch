@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgotten Cycle</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #005F73;
+            color: #E9D7A5;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #E9D7A5;
+            color: #001219;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .toolbar .center {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .toolbar button {
+            background-color: #E9D7A5;
+            color: #001219;
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 2px solid #001219;
+            font-size: 1.2rem;;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .toolbar button:hover {
+            background-color: #444;
+            transform: scale(1.02);
+        }
+
+        .hamburger {
+                vertical-align: middle;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .column {
+            background: #004c5c;
+            flex: 1;
+            max-width: 540px;
+            box-sizing: border-box;
+            margin: 16px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+            padding: 10px;
+        }
+        @media (max-width: 740px) {
+            .column {
+                flex-basis: 100%;
+                padding: 1%;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .nav-menu {
+                display: block!;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+
+        }
+
+        .bottom-toolbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .left {
+            align-items: left;
+        }
+
+        .toolbar button:hover {
+            background-color: var(--button-background-hover);
+        }
+
+        .nav-menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background: #3E2C1C;
+            color: #E0D6B9;
+            padding: 20px;
+            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-menu a:hover {
+            border-radius: 5px;
+        }
+
+        .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 100%;
+                background-color: #333;
+                color: white;
+                padding-top: 60px;
+                z-index: 1;
+            }
+        .nav-menu a {
+                padding: 10px 15px;
+                text-decoration: none;
+                color: white;
+                display: block;
+            }
+        .nav-menu a:hover {
+                background-color: #575757;
+            }
+        .action-item {
+                display: flex;
+                align-items: center;
+                padding: 6px;
+                background-color: #005F73;
+                border-top: 1px solid #004c5c;
+            }
+        .action-item:hover {
+                background-color: #005567;;
+            }
+        .pageTitle {
+            color: #001219;
+            display: inline;
+            vertical-align: middle;
+            font-weight: 400;
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('click', function(event) {
+            var navMenu = document.getElementById("navMenu");
+            var hamburger = document.querySelector('.hamburger');
+            if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                navMenu.style.display = 'none';
+            }
+        });
+    </script>
+    <div class="toolbar top-toolbar">
+        <div style="display: table;">
+            <button class="hamburger" onclick="toggleNav()">☰</button>
+            <div id="navMenu" class="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="pageTitle"><img src="images/fishing-rod.png"/></div>
+            <div class="pageTitle"> Fishing</div>
+        </div>
+        <script>
+            function toggleNav() {
+                var navMenu = document.getElementById("navMenu");
+                if (navMenu.style.display === "block") {
+                    navMenu.style.display = "none";
+                } else {
+                    navMenu.style.display = "block";
+                }
+            }
+        </script>
+
+    </div>
+
+    <div class="content">
+        <div class="column">
+            <div style="display: flex; justify-content: space-between;">
+                <div style="text-align: left;">
+                    <h2>Shrimp</h2>
+                </div>
+                <div style="text-align: right;">
+                    <h2>Level 1</h2>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <img width="64px" height="64px" src="./images/shrimp.png">  <br />
+            </div>
+
+        </div>
+        <div class="column">
+            <h2>Actions</h2>
+            <div class="action-item">
+                <img src="./images/shrimp.png" style="margin-right: 10px;"> <span>Shrimp lvl 1</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/sardine.png" style="margin-right: 10px;"> <span >Sardine lvl 10</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/tilapia.png" style="margin-right: 10px;"> <span>Tilapia lvl 20</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/crab.png" style="margin-right: 10px;"> <span>Crab lvl 30</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/tuna.png" style="margin-right: 10px;"> <span >Tuna lvl 40</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/salmon.png" style="margin-right: 10px;"> <span>Salmon lvl 50</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/pufferfish.png" style="margin-right: 10px;"> <span>Puffer lvl 60</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/squid.png" style="margin-right: 10px;"> <span>Squid lvl 70</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/jellyfish.png" style="margin-right: 10px;"> <span>Jellyfish lvl 80</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/eel.png" style="margin-right: 10px;"> <span>Eel lvl 90</span>
+            </div>
+            <div class="action-item">
+                <img src="./images/lobster.png" style="margin-right: 10px;"> <span>Lobster lvl 100</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
