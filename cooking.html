@@ -3,42 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Friendly Website</title>
+    <title>Forgotten Cycle</title>
     <style>
         body {
+
             margin: 0;
-            background-color: #015656;
-            color: #E0D6B9;
-            font-family: 'Treasure Map', serif;
-            --border-px: 1px;
-            --border-color: black;
-            --button-background: #013A3A;
-            --button-background-hover: #9a9a9a;
-            --foreground-color: #1b4b4b;
-            --header-height: 40px;
-            --navigation-height: 50px;
-        }
-        h1, h2, h3 {
-            font-family: 'Treasure Map', serif;
-            color: #C9A227;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            background-color: #005F73;
+            color: #E9D7A5;
         }
 
-        button {
-            background: linear-gradient(to bottom, #C9A227, #8B6F1E);
-            border: 2px solid #3E2C1C;
-            color: #3E2C1C;
-            font-size: 1.2rem;
-            padding: 10px 20px;
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #E9D7A5;
+            color: #001219;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .toolbar .center {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .toolbar button {
+            background-color: #E9D7A5;
+            color: #001219;
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
             cursor: pointer;
+            border: 2px solid #001219;
+            font-size: 1.2rem;;
             border-radius: 5px;
             transition: 0.3s;
         }
 
-        button:hover {
-            background: linear-gradient(to bottom, #E0C050, #A37B23);
-            transform: scale(1.05);
+        .toolbar button:hover {
+            background-color: #444;
+            transform: scale(1.02);
         }
+
+        .hamburger {
+                vertical-align: middle;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
 
         .container {
             max-width: 900px;
@@ -49,25 +60,31 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
         }
 
-        .pirate-border {
-            border: 3px solid #8B6F1E;
-            padding: 15px;
-            background: rgba(255, 239, 184, 0.1);
-        }
-
         .column {
             flex: 1;
             max-width: 540px;
-            box-sizing: border-box;
-            margin: 16px;
-            background: rgba(255, 239, 184, 0.1);
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-
         }
+
+        .card {
+            background: #004c5c;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 16px;
+            margin-right: 16px;
+            margin-bottom: 16px;
+        }
+
         @media (max-width: 740px) {
             .column {
                 flex-basis: 100%;
+                padding-right: 1%;
+                padding-left: 1%;
+            }
+            .card {
+                flex-basis: 100%;
+                padding: 1%;
             }
         }
 
@@ -76,27 +93,7 @@
                 display: block!;
             }
         }
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: #8B6F1E;
-            color: #E0D6B9;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
-        }
-        .toolbar .center {
-            flex-grow: 1;
-            text-align: center;
-        }
-        .toolbar button {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
+
         .content {
             display: flex;
             flex-wrap: wrap;
@@ -114,14 +111,6 @@
         .left {
             align-items: left;
         }
-        .toolbar button {
-            background-color: #013A3A;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
 
         .toolbar button:hover {
             background-color: var(--button-background-hover);
@@ -134,22 +123,100 @@
             width: 200px;
             height: 100%;
             background: #3E2C1C;
-            color: #E0D6B9;
+            color: #E9D7A5;
             padding: 20px;
             box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.7);
         }
 
         .nav-menu a {
             display: block;
-            color: #C9A227;
             padding: 10px;
             text-decoration: none;
             font-size: 1.2rem;
         }
 
         .nav-menu a:hover {
-            background: rgba(255, 239, 184, 0.2);
             border-radius: 5px;
+        }
+
+        .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 100%;
+                background-color: #333;
+                color: white;
+                padding-top: 60px;
+                z-index: 1;
+            }
+        .nav-menu a {
+                padding: 10px 15px;
+                text-decoration: none;
+                color: white;
+                display: block;
+            }
+        .nav-menu a:hover {
+                background-color: #575757;
+            }
+        .action-item {
+                display: flex;
+                align-items: center;
+                padding: 6px;
+                background-color: #005F73;
+                border-top: 1px solid #004c5c;
+            }
+        .action-item:hover {
+                background-color: #005567;;
+            }
+        .pageTitle {
+            color: #001219;
+            display: inline;
+            vertical-align: middle;
+            font-weight: 400;
+            font-size: 1.3rem;
+            padding-right: 8px;
+        }
+        progress {
+            border-radius: 7px;
+            height: 22px;
+            box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+        }
+            progress::-webkit-progress-bar {
+            background-color: #005F73;
+        }
+            progress::-webkit-progress-value {
+            background-color: #94D2BD;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 1s linear infinite
+        }
+        .loader::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            inset: 0px;
+            border-radius: 50%;
+            border: 5px solid #94D2BD;
+            animation: prixClipFix 2s linear infinite ;
+        }
+
+        @keyframes rotate {
+            100%   {transform: rotate(360deg)}
+        }
+
+        @keyframes prixClipFix {
+                0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+                25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+                50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+                75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+                100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
         }
     </style>
 </head>
@@ -164,12 +231,21 @@
         });
     </script>
     <div class="toolbar top-toolbar">
-        <button class="hamburger" onclick="toggleNav()">☰</button>
-        <div id="navMenu" class="nav-menu">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+        <div style="display: table;">
+            <button class="hamburger" onclick="toggleNav()">☰</button>
+            <div id="navMenu" class="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="pageTitle"><img src="images/fishing-rod.png"/></div>
+            <div class="pageTitle">Cooking</div>
+
+            <div class="pageTitle">
+                    <progress value="80" max="100"></progress>
+            </div>
+            <div class="pageTitle">Skill Level 151</div>
         </div>
         <script>
             function toggleNav() {
@@ -181,58 +257,66 @@
                 }
             }
         </script>
-        <style>
-            .hamburger {
-                background-color: #013A3A;
-                color: white;
-                border: none;
-                padding: 10px;
-                cursor: pointer;
-            }
-            .nav-menu {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 200px;
-                height: 100%;
-                background-color: #333;
-                color: white;
-                padding-top: 60px;
-                z-index: 1;
-            }
-            .nav-menu a {
-                padding: 10px 15px;
-                text-decoration: none;
-                color: white;
-                display: block;
-            }
-            .nav-menu a:hover {
-                background-color: #575757;
-            }
-        </style>
 
     </div>
 
     <div class="content">
         <div class="column">
-            <h2>Column 1</h2>
-            <p>This is the first column.</p>
+            <div class="card">
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="text-align: left;">
+                        <h2>Shrimp</h2>
+                    </div>
+                    <div style="text-align: right;">
+                        <h2>Level 1</h2>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img width="64px" height="64px" src="./images/cooking/shrimp-cooked.png">  <br />
+                </div>
+                <center>
+                    <div class="loader" ></div>
+                </center>
+            </div>
+            <button class="card" style="background-color: #94D2BD; color: #001219; width: calc(100% - 32px); font-size: larger;">Craft</button>
         </div>
         <div class="column">
-            <h2>Select Recipe to Cook</h2>
-            <img src="./images/shrimp-cooked.png"> <span style="text-align: center">Shrimp lvl 1</span>  <br />
-            <img src="./images/sardine-cooked.png"> <span style="text-align: center">Sardine lvl 10</span><br />
-            <img src="./images/tilapia-cooked.png"> <span style="text-align: center">Tilapia lvl 20</span><br />
-            <img src="./images/crab-cooked.png"> <span style="text-align: center">Crab lvl 30</span><br />
-            <img src="./images/tuna-cooked.png"> <span style="text-align: center">Tuna lvl 40</span><br />
-            <img src="./images/salmon-cooked.png"> <span style="text-align: center">Salmon lvl 50</span><br />
-            <img src="./images/pufferfish-cooked.png"> <span style="text-align: center">Puffer lvl 60</span><br />
-            <img src="./images/squid-cooked.png"> <span style="text-align: center">Squid lvl 70</span><br />
-            <img src="./images/jellyfish-cooked.png"> <span style="text-align: center">Jellyfish lvl 80</span><br />
-            <img src="./images/eel-cooked.png"> <span style="text-align: center">Eel lvl 90</span><br />
-            <img src="./images/lobster-cooked.png"> <span style="text-align: center">Lobster lvl 100</span><br />
-
+            <div class="card">
+                <h2>Actions</h2>
+                <div class="action-item">
+                    <img src="./images/cooking/shrimp-cooked.png" style="margin-right: 10px;"> <span>Shrimp lvl 1</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/sardine-cooked.png" style="margin-right: 10px;"> <span >Sardine lvl 10</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/tilapia-cooked.png" style="margin-right: 10px;"> <span>Flounder lvl 20</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/crab-cooked.png" style="margin-right: 10px;"> <span>Crab lvl 30</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/tuna-cooked.png" style="margin-right: 10px;"> <span >Tuna lvl 40</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/salmon-cooked.png" style="margin-right: 10px;"> <span>Salmon lvl 50</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/pufferfish-cooked.png" style="margin-right: 10px;"> <span>Puffer lvl 60</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/squid-cooked.png" style="margin-right: 10px;"> <span>Squid lvl 70</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/jellyfish-cooked.png" style="margin-right: 10px;"> <span>Jellyfish lvl 80</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/eel-cooked.png" style="margin-right: 10px;"> <span>Eel lvl 90</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/cooking/lobster-cooked.png" style="margin-right: 10px;"> <span>Lobster lvl 100</span>
+                </div>
+            </div>
         </div>
     </div>
 </body>

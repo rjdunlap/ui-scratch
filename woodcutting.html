@@ -3,42 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Friendly Website</title>
+    <title>Forgotten Cycle</title>
     <style>
         body {
+
             margin: 0;
-            background-color: #015656;
-            color: #E0D6B9;
-            font-family: 'Treasure Map', serif;
-            --border-px: 1px;
-            --border-color: black;
-            --button-background: #013A3A;
-            --button-background-hover: #9a9a9a;
-            --foreground-color: #1b4b4b;
-            --header-height: 40px;
-            --navigation-height: 50px;
-        }
-        h1, h2, h3 {
-            font-family: 'Treasure Map', serif;
-            color: #C9A227;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            background-color: #005F73;
+            color: #E9D7A5;
         }
 
-        button {
-            background: linear-gradient(to bottom, #C9A227, #8B6F1E);
-            border: 2px solid #3E2C1C;
-            color: #3E2C1C;
-            font-size: 1.2rem;
-            padding: 10px 20px;
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #E9D7A5;
+            color: #001219;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .toolbar .center {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .toolbar button {
+            background-color: #E9D7A5;
+            color: #001219;
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
             cursor: pointer;
+            border: 2px solid #001219;
+            font-size: 1.2rem;;
             border-radius: 5px;
             transition: 0.3s;
         }
 
-        button:hover {
-            background: linear-gradient(to bottom, #E0C050, #A37B23);
-            transform: scale(1.05);
+        .toolbar button:hover {
+            background-color: #444;
+            transform: scale(1.02);
         }
+
+        .hamburger {
+                vertical-align: middle;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
 
         .container {
             max-width: 900px;
@@ -49,25 +60,31 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
         }
 
-        .pirate-border {
-            border: 3px solid #8B6F1E;
-            padding: 15px;
-            background: rgba(255, 239, 184, 0.1);
-        }
-
         .column {
             flex: 1;
             max-width: 540px;
-            box-sizing: border-box;
-            margin: 16px;
-            background: rgba(255, 239, 184, 0.1);
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-
         }
+
+        .card {
+            background: #004c5c;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 16px;
+            margin-right: 16px;
+            margin-bottom: 16px;
+        }
+
         @media (max-width: 740px) {
             .column {
                 flex-basis: 100%;
+                padding-right: 1%;
+                padding-left: 1%;
+            }
+            .card {
+                flex-basis: 100%;
+                padding: 1%;
             }
         }
 
@@ -76,27 +93,7 @@
                 display: block!;
             }
         }
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: #8B6F1E;
-            color: #E0D6B9;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
-        }
-        .toolbar .center {
-            flex-grow: 1;
-            text-align: center;
-        }
-        .toolbar button {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
+
         .content {
             display: flex;
             flex-wrap: wrap;
@@ -114,14 +111,6 @@
         .left {
             align-items: left;
         }
-        .toolbar button {
-            background-color: #013A3A;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
 
         .toolbar button:hover {
             background-color: var(--button-background-hover);
@@ -134,22 +123,105 @@
             width: 200px;
             height: 100%;
             background: #3E2C1C;
-            color: #E0D6B9;
+            color: #E9D7A5;
             padding: 20px;
             box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.7);
         }
 
         .nav-menu a {
             display: block;
-            color: #C9A227;
             padding: 10px;
             text-decoration: none;
             font-size: 1.2rem;
         }
 
         .nav-menu a:hover {
-            background: rgba(255, 239, 184, 0.2);
             border-radius: 5px;
+        }
+
+        .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 100%;
+                background-color: #333;
+                color: white;
+                padding-top: 60px;
+                z-index: 1;
+            }
+        .nav-menu a {
+                padding: 10px 15px;
+                text-decoration: none;
+                color: white;
+                display: block;
+            }
+        .nav-menu a:hover {
+                background-color: #575757;
+            }
+        .action-item {
+                display: flex;
+                align-items: center;
+                padding: 6px;
+                background-color: #005F73;
+                border-top: 1px solid #004c5c;
+            }
+        .action-item:hover {
+                background-color: #005567;;
+            }
+        .pageTitle {
+            color: #001219;
+            display: inline;
+            vertical-align: middle;
+            font-weight: 400;
+            font-size: 1.3rem;
+            padding-right: 8px;
+        }
+        progress {
+            border-radius: 7px;
+            height: 22px;
+            box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+        }
+            progress::-webkit-progress-bar {
+            background-color: #005F73;
+        }
+            progress::-webkit-progress-value {
+            background-color: #94D2BD;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 1s linear infinite
+        }
+        .loader::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            inset: 0px;
+            border-radius: 50%;
+            border: 5px solid #E9D7A5;
+            animation: prixClipFix 2s linear infinite ;
+        }
+
+        .disabled {
+            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            100%   {transform: rotate(360deg)}
+        }
+
+        @keyframes prixClipFix {
+                0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+                25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+                50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+                75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+                100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
         }
     </style>
 </head>
@@ -164,12 +236,21 @@
         });
     </script>
     <div class="toolbar top-toolbar">
-        <button class="hamburger" onclick="toggleNav()">☰</button>
-        <div id="navMenu" class="nav-menu">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+        <div style="display: table;">
+            <button class="hamburger" onclick="toggleNav()">☰</button>
+            <div id="navMenu" class="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="pageTitle"><img src="images/tools/iron-hatchet.png"/></div>
+            <div class="pageTitle">Woodcutting</div>
+
+            <div class="pageTitle">
+                    <progress value="80" max="100"></progress>
+            </div>
+            <div class="pageTitle">Skill Level 82</div>
         </div>
         <script>
             function toggleNav() {
@@ -181,48 +262,80 @@
                 }
             }
         </script>
-        <style>
-            .hamburger {
-                background-color: #013A3A;
-                color: white;
-                border: none;
-                padding: 10px;
-                cursor: pointer;
-            }
-            .nav-menu {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 200px;
-                height: 100%;
-                background-color: #333;
-                color: white;
-                padding-top: 60px;
-                z-index: 1;
-            }
-            .nav-menu a {
-                padding: 10px 15px;
-                text-decoration: none;
-                color: white;
-                display: block;
-            }
-            .nav-menu a:hover {
-                background-color: #575757;
-            }
-        </style>
 
     </div>
 
     <div class="content">
         <div class="column">
-            <h2>Column 1</h2>
-            <p>This is the first column.</p>
+            <div class="card">
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="text-align: left;">
+                        <h2>Rubra</h2>
+                    </div>
+                    <div style="text-align: right;">
+                        <h2>Level 80</h2>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img width="64px" height="64px" src="./images/woodcutting/Rubra.png">  <br />
+                </div>
+                <center>
+                    <div class="loader" ></div>
+                </center>
+            </div>
+
+            <div class="card">
+                <h2>Loot</h2>
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="text-align: left;">
+                        <img width="32px" height="32px" src="./images/logs/rubra-log.png"> <span>Rubra Logs</span> <span>80</span> 
+                    </div>
+                </div>
+            </div>
+            <button class="card" style="background-color: #94D2BD; color: #001219; width: calc(100% - 32px); font-size: larger;">Stop</button>
         </div>
         <div class="column">
-            <h2>Column 2</h2>
-            <p>This is the second column.</p>
-
+            <div class="card">
+                <h2>Actions</h2>
+                <div class="action-item" style="justify-content: space-between;">
+                    <span><img src="./images/woodcutting/Fir.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Fir</span></span>
+                    <span><span>🕑6s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 6.5 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
+                    <span>1 xp <img width="16px" height="16px" src="./images/knowledge.png"> lvl 2</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Elm.png" width="32px" height="32px" style="margin-right: 10px;"> <span >Elm</span> <span>🕑9s</span><span> 13 xp</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Beech.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Beech</span> <span>🕑13.5s</span><span>26 xp</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Oak.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Oak</span> <span>🕑20s</span><span>52 xp</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Birch.png" width="32px" height="32px" style="margin-right: 10px;"> <span >Birch</span> <span>🕑30s</span><span>104 xp</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Maple.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Maple</span> <span>🕑67.5s</span><span>208 xp</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Willow.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Willow</span> <span>🕑100s</span><span>416 xp</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Cypress.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Cypress</span> <span>🕑150s</span><span>832 xp</span>
+                </div>
+                <div class="action-item">
+                    <img src="./images/woodcutting/Rubra.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Rubra</span> <span>🕑225s</span><span>1664 xp</span>
+                </div>
+                <div class="action-item disabled">
+                    <img src="./images/questionmark.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Locked lvl 90</span>
+                </div>
+                <div class="action-item disabled">
+                    <img src="./images/questionmark.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Locked lvl 100</span>
+                </div>
+                <div class="action-item disabled">
+                    <img src="./images/questionmark.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Locked lvl 110</span>
+                </div>
+            </div>
         </div>
     </div>
 </body>
