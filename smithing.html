@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgotten Cycle</title>
     <style>
+    :root {
+        --bg-primary: #141a21;
+        --bg-secondary: #1a222b;
+        --bg-tertiary: #2a3440;
+        --text-primary: #ffffff;
+        --text-secondary: #8892a0;
+        --accent: #4a90e2;
+    }
+
         body {
 
             margin: 0;
@@ -223,6 +232,52 @@
                 75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
                 100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
         }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-tertiary);
+            border: none;
+            border-radius: 4px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .inventory-status {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+        }
+
+        .inventory-slot {
+            aspect-ratio: 1;
+            background-color: var(--bg-tertiary);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+
+        .inventory-slot img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 4px;
+        }
+
+        .inventory-slot .quantity {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
@@ -267,92 +322,22 @@
     </div>
 
     <div class="content">
-        <div class="column">
-            <div class="card">
-                <div style="display: flex; justify-content: space-between;">
-                    <div style="text-align: left;">
-                        <h2>Rubra</h2>
-                    </div>
-                    <div style="text-align: right;">
-                        <h2>Level 80</h2>
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <img width="64px" height="64px" src="./images/woodcutting/Rubra.png">  <br />
-                </div>
-                <center>
-                    <div class="loader" ></div>
-                </center>
+        <div class="inventory-view">
+            <div class="tabs">
+                <button class="tab active">Items</button>
+                <button class="tab">Upgrade</button>
             </div>
 
-            <div class="card">
-                <h2>Loot</h2>
-                <div style="display: flex; justify-content: space-between;">
-                    <div style="text-align: left;">
-                        <img width="32px" height="32px" src="./images/logs/rubra-log.png"> <span>Rubra Logs</span> <span>80</span> 
-                    </div>
-                </div>
+            <div class="search-container">
+                <input type="text" id="searchInventory" placeholder="Search inventory">
             </div>
-            <button class="card" style="background-color: #94D2BD; color: #001219; width: calc(100% - 32px); font-size: larger;">Stop</button>
-        </div>
-        <div class="column">
-            <div class="card">
-                <h2>Actions</h2>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Fir.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Fir</span></span>
-                    <span><span>🕑6s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 6.5 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Elm.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Elm</span></span>
-                    <span><span>🕑9s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 13 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Beech.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Beech</span></span>
-                    <span><span>🕑13.5s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 26 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Oak.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Oak</span></span>
-                    <span><span>🕑20s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 52 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Birch.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Birch</span></span>
-                    <span><span>🕑30s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 104 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Maple.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Maple</span></span>
-                    <span><span>🕑67.5s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 208 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Willow.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Willow</span></span>
-                    <span><span>🕑100s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 416 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Cypress.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Cypress</span></span>
-                    <span><span>🕑150s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/>832 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item" style="justify-content: space-between;">
-                    <span><img src="./images/woodcutting/Rubra.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Rubra</span></span>
-                    <span><span>🕑225s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/>1664 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
-                    <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
-                </div>
-                <div class="action-item disabled" style="justify-content: space-between;">
-                    <img src="./images/questionmark.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Locked lvl 90</span>
-                </div>
-                <div class="action-item disabled" style="justify-content: space-between;">
-                    <img src="./images/questionmark.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Locked lvl 100</span>
-                </div>
-                <div class="action-item disabled" style="justify-content: space-between;">
-                    <img src="./images/questionmark.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Locked lvl 110</span>
-                </div>
+
+            <div class="inventory-status">
+                <span>Items</span>
+                <span class="slot-count">0 / 100 Slots</span>
             </div>
+
+            <div class="inventory-grid" id="inventoryGrid"></div>
         </div>
     </div>
 </body>
