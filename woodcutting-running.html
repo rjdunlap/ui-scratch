@@ -286,31 +286,27 @@
                         <h2>Fir</h2>
                     </div>
                     <div style="text-align: right;">
-                        <h2>1<img width="16px" height="16px" src="./images/resistance.png"> &nbsp; &nbsp; 20/20 <img width="16px" height="16px" src="./images/hp.png"></h2>
+                        <h2>1<img width="16px" height="16px" src="./images/resistance.png"> &nbsp; &nbsp; 16/20<img width="16px" height="16px" src="./images/hp.png"></h2>
                     </div>
                 </div>
                 <div style="text-align: center;">
                     <img width="64px" height="64px" src="./images/woodcutting/Fir.png">  <br />
-                    <div><progress class="hp" value="100" max="100"></progress></div>
+                    <div><progress class="hp" value="80" max="100"></progress></div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>Drops</h2>
+                <h2>Loot</h2>
                 <div style="display: flex; justify-content: space-between;">
-                    <span style="text-align: left;"><img width="16xp" height="16px" src="images/strength.png"/>Strength 1 xp </span>
-                    <span style="text-align: right;">Per Action</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span style="text-align: left;"><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/>Woodcutting 300 xp </span>
-                    <span style="text-align: right;">Always</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span style="text-align: left;"><img width="16xp" height="16px" src="./images/logs/fir-log.png"/>Fir Log 1-3 </span>
-                    <span style="text-align: right;"> Always</span>
+                    <div style="text-align: left;">
+                        <img width="32px" height="32px" src="./images/logs/fir-log.png"> <span>Fir Logs</span> <span>80</span> 
+                    </div>
                 </div>
             </div>
-            <button class="card" style="background-color: #94D2BD; color: #001219; width: calc(100% - 32px); font-size: larger;" onclick="window.location.href='./woodcutting-running.html'">Start</button>
+            <button class="card" style="background-color: #94D2BD; color: #001219; width: calc(100% - 32px); font-size: larger;">Stop</button>
+            <center>
+                <div class="loader" ></div>
+            </center>
         </div>
         <div class="column">
             <div class="card">
@@ -327,7 +323,7 @@
                     <span style="text-align: left;">Crit Chance: 5%</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
-                    <span style="text-align: left;">Max Damage: 5</span>
+                    <span style="text-align: left;">Max Damage: 4</span>
                     <span style="text-align: left;">Damage Range: 75 - 100%</span>
                 </div>
                 <div style="display: flex; justify-content: space-between;">
@@ -343,47 +339,47 @@
                 <h2>Actions</h2>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Fir.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Fir</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 20</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑6s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 6.5 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Elm.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Elm</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 40</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑9s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 13 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Beech.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Beech</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 80</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑13.5s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 26 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Oak.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Oak</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 160</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑20s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 52 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Birch.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Birch</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 320</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑30s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 104 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Maple.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Maple</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 640</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑67.5s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 208 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Willow.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Willow</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 1280</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑100s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 416 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Cypress.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Cypress</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 2560</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑150s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/>832 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item" style="justify-content: space-between;">
                     <span><img src="./images/woodcutting/Rubra.png" width="32px" height="32px" style="margin-right: 10px;"> <span>Rubra</span></span>
-                    <span><span><img width="16xp" height="16px" src="images/hp.png"/> 5120</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>🕑30s</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/> 10 xp/s</span></span>
+                    <span><span>🕑225s</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/tools/iron-hatchet.png"/>1664 xp</span>&nbsp;&nbsp;&nbsp;<span><img width="16xp" height="16px" src="images/strength.png"/> 1 xp</span></span>
                     <span><img width="32px" height="32px" src="./images/action-bonus3.png"> lvl 2 - 11/93</span>
                 </div>
                 <div class="action-item disabled" style="justify-content: space-between;">

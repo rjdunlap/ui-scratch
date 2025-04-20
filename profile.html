@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgotten Cycle</title>
+    <style>
+    :root {
+        --bg-primary: #141a21;
+        --bg-secondary: #1a222b;
+        --bg-tertiary: #2a3440;
+        --text-primary: #ffffff;
+        --text-secondary: #8892a0;
+        --accent: #4a90e2;
+    }
+
+        body {
+
+            margin: 0;
+            background-color: #005F73;
+            color: #E9D7A5;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #E9D7A5;
+            color: #001219;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+        .toolbar .center {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .toolbar button {
+            background-color: #E9D7A5;
+            color: #001219;
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 2px solid #001219;
+            font-size: 1.2rem;;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .toolbar button:hover {
+            background-color: #444;
+            transform: scale(1.02);
+        }
+
+        .hamburger {
+                vertical-align: middle;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .column {
+            flex: 1;
+            max-width: 540px;
+        }
+
+        .card {
+            background: #004c5c;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 10px;
+            margin-left: 16px;
+            margin-right: 16px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 740px) {
+            .column {
+                flex-basis: 100%;
+                padding-right: 1%;
+                padding-left: 1%;
+            }
+            .card {
+                flex-basis: 100%;
+                padding: 1%;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .nav-menu {
+                display: block!;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+
+        }
+
+        .bottom-toolbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .left {
+            align-items: left;
+        }
+
+        .toolbar button:hover {
+            background-color: var(--button-background-hover);
+        }
+
+        .nav-menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background: #3E2C1C;
+            color: #E9D7A5;
+            padding: 20px;
+            box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-menu a:hover {
+            border-radius: 5px;
+        }
+
+        .nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 100%;
+                background-color: #333;
+                color: white;
+                padding-top: 60px;
+                z-index: 1;
+            }
+        .nav-menu a {
+                padding: 10px 15px;
+                text-decoration: none;
+                color: white;
+                display: block;
+            }
+        .nav-menu a:hover {
+                background-color: #575757;
+            }
+        .action-item {
+                display: flex;
+                align-items: center;
+                padding: 6px;
+                background-color: #005F73;
+                border-top: 1px solid #004c5c;
+            }
+        .action-item:hover {
+                background-color: #005567;;
+            }
+        .pageTitle {
+            color: #001219;
+            display: inline;
+            vertical-align: middle;
+            font-weight: 400;
+            font-size: 1.3rem;
+            padding-right: 8px;
+        }
+        progress {
+            border-radius: 7px;
+            height: 22px;
+            box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+        }
+            progress::-webkit-progress-bar {
+            background-color: #005F73;
+        }
+            progress::-webkit-progress-value {
+            background-color: #94D2BD;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            position: relative;
+            animation: rotate 1s linear infinite
+        }
+        .loader::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            inset: 0px;
+            border-radius: 50%;
+            border: 5px solid #E9D7A5;
+            animation: prixClipFix 2s linear infinite ;
+        }
+
+        .disabled {
+            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            100%   {transform: rotate(360deg)}
+        }
+
+        @keyframes prixClipFix {
+                0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+                25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+                50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+                75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+                100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-tertiary);
+            border: none;
+            border-radius: 4px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .inventory-status {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+        }
+
+        .inventory-slot {
+            aspect-ratio: 1;
+            background-color: var(--bg-tertiary);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+
+        .inventory-slot img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 4px;
+        }
+
+        .inventory-slot .quantity {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('click', function(event) {
+            var navMenu = document.getElementById("navMenu");
+            var hamburger = document.querySelector('.hamburger');
+            if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                navMenu.style.display = 'none';
+            }
+        });
+    </script>
+    <div class="toolbar top-toolbar">
+        <div style="display: table;">
+            <button class="hamburger" onclick="toggleNav()">☰</button>
+            <div id="navMenu" class="nav-menu">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="pageTitle"><img src="images/tools/iron-hatchet.png"/></div>
+            <div class="pageTitle">Woodcutting</div>
+
+            <div class="pageTitle">
+                    <progress value="80" max="100"></progress>
+            </div>
+            <div class="pageTitle">Skill Level 82</div>
+        </div>
+        <div><img src="images/blood-bonus.png"/> lvl 16 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/soul-bonus.png"/> lvl 1</div>
+        <script>
+            function toggleNav() {
+                var navMenu = document.getElementById("navMenu");
+                if (navMenu.style.display === "block") {
+                    navMenu.style.display = "none";
+                } else {
+                    navMenu.style.display = "block";
+                }
+            }
+        </script>
+
+    </div>
+
+    <div class="content">
+        <div class="inventory-view">
+            <div class="tabs">
+                <button class="tab active">Items</button>
+                <button class="tab">Upgrade</button>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="searchInventory" placeholder="Search inventory">
+            </div>
+
+            <div class="inventory-status">
+                <span>Items</span>
+                <span class="slot-count">0 / 100 Slots</span>
+            </div>
+
+            <div class="inventory-grid" id="inventoryGrid"></div>
+        </div>
+    </div>
+</body>
+</html>
